@@ -70,7 +70,7 @@ def train_epoch_kd_adv(model, model_ad, optim, data_loader, epoch, params):
                                       F.softmax(output_tch / T, dim=1)) * (T * T)   # wish to max this item
 
             # total loss
-            loss = tch_loss - params.weight * adv_loss + 100.0  # make the loss positive by adding a constant
+            loss = tch_loss + params.weight * adv_loss
 
             # ############################################################
 
